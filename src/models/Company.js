@@ -5,6 +5,14 @@ const CompanySchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    created_at: {
+        type: Date,
+        default: Date.now(),
+    },
+    // units: {
+    //     type: mongoose.Types.ObjectId,
+    //     ref: 'Unit',
+    // },
 });
 
 const Company = mongoose.model('Company', CompanySchema);

@@ -12,6 +12,18 @@ module.exports = {
         }
     },
 
+    // async show(req, res) {
+    //     try {
+    //         const { id } = req.params;
+
+    //         const company = await Company.find({ _id: id }).populate({ path: 'units', populate: { path: 'machines' } });
+
+    //         return res.json(company);
+    //     } catch (error) {
+    //         return res.status(400).send({ message: 'Error' });
+    //     }
+    // },
+
     async store(req, res) {
         try {
             const { name } = req.body;

@@ -18,7 +18,7 @@ module.exports = {
 
             const machine = await Machine.create({ unit, name, image, model, responsible, status });
 
-            return res.send({ message: 'Updated' });
+            return res.json(machine);
         } catch (error) {
             return res.status(400).send({ message: 'Error' }); 
         }

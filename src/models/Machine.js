@@ -26,6 +26,10 @@ const MachineSchema = mongoose.Schema({
         type: String,
         enum: ['Available', 'Disabled', 'In maintence'],
         default: 'Available',
+    },
+    created_at: {
+        type: Date,
+        default: Date.now(),
     }
 });
 
