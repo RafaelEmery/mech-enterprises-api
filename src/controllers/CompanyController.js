@@ -22,7 +22,7 @@ module.exports = {
             return res.status(400).send({ message: 'Error' });
         }
     },
-
+    
     async update(req, res) {    
         try {
             const { id } = req.params;
