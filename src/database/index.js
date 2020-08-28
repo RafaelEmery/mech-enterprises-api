@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/mech-enterprises-db', { 
+mongoose.connect('mongodb+srv://rafael:rafael@mech-enterprises-db.lvutw.mongodb.net/mech-enterprises-db?retryWrites=true&w=majority', { 
     useNewUrlParser: true, 
     useUnifiedTopology: true 
 }); 
