@@ -9,10 +9,10 @@ const CompanySchema = new mongoose.Schema({
         type: Date,
         default: Date.now(),
     },
-    // units: {
-    //     type: mongoose.Types.ObjectId,
-    //     ref: 'Unit',
-    // },
+    units: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Unit',
+    }],
 });
 
 const Company = mongoose.model('Company', CompanySchema);

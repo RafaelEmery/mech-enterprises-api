@@ -1,4 +1,5 @@
 const Machine = require('../models/Machine');
+const Unit = require('../models/Unit');
 
 module.exports = {
 
@@ -17,8 +18,12 @@ module.exports = {
             const { unit, name, image, model, responsible, status } = req.body;
 
             const machine = await Machine.create({ unit, name, image, model, responsible, status });
+            const unitObject = await Unit.findOne({ _id: unit });
 
-            return res.json(machine);
+            unitObject.machines.push(machine);
+            unitObject.save();
+
+            return res.send({ message: 'Created' });
         } catch (error) {
             return res.status(400).send({ message: 'Error' }); 
         }
@@ -32,7 +37,7 @@ module.exports = {
 
             await Machine.update({_id: id}, { unit, name, image, model, responsible, status });
 
-            return res.json(machine);
+            return res.send({ message: 'Created' });
         } catch (error) {
             return res.status(400).send({ message: 'Error' }); 
         } 

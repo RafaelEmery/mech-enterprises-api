@@ -1,10 +1,11 @@
 const Unit = require('../models/Unit');
+const Company = require('../models/Company');
 
 module.exports = {
 
     async index(req, res) {
         try {
-            const units = await Unit.find().populate('company', 'name');
+            const units = await Unit.find().populate('company', 'name').populate('machines');
 
             return res.json(units);
         } catch (error) {
@@ -13,12 +14,17 @@ module.exports = {
     },
 
     async store(req, res) {
+        
         try {
             const { company, name } = req.body;
-
+            
             const unit = await Unit.create({ company, name });
+            const companyObject = await Company.findOne({ _id: company });
+        
+            companyObject.units.push(unit);
+            companyObject.save();
 
-            return res.json(unit);
+            return res.send({ message: 'Created' });
         } catch (error) {
             return res.status(400).send({ message: 'Error' });
         }

@@ -1,13 +1,13 @@
 {
   "name": "mech-enterprises-api",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "RESTful API for managing companies, units and machines",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon src/server.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["mongodb", "mongoose", "express", "nodejs", "api-rest"],
+  "author": "RafaelEmery",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",

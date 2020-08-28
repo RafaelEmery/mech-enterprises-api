@@ -12,17 +12,22 @@ module.exports = {
         }
     },
 
-    // async show(req, res) {
-    //     try {
-    //         const { id } = req.params;
-
-    //         const company = await Company.find({ _id: id }).populate({ path: 'units', populate: { path: 'machines' } });
-
-    //         return res.json(company);
-    //     } catch (error) {
-    //         return res.status(400).send({ message: 'Error' });
-    //     }
-    // },
+    async show(req, res) {
+        try {
+            const { id } = req.params;
+    
+            const company = await Company
+                                    .findOne({ _id: id })
+                                    .populate({
+                                        path: 'units',
+                                        populate: { path: 'machines' }
+                                    });
+                                    
+            return res.json(company);
+            } catch (error) {
+                return res.status(400).send(error.message);
+            }
+    },
 
     async store(req, res) {
         try {
