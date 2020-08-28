@@ -7,7 +7,7 @@ RESTful API to manage companies, units and all your machines!
 ### :computer: Technologies
 
 - [X] [Node.js]()
-- [X] [MongoDB]()
+- [X] [MongoDB Atlas]()
 - [X] [Express]()
 - [X] [Mongoose]()
 - [X] [Nodemon]()

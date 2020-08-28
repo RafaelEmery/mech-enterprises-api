@@ -12,6 +12,7 @@ module.exports = {
         }
     },
 
+    //Getting complete data of one company
     async show(req, res) {
         try {
             const { id } = req.params;
