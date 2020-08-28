@@ -9,7 +9,7 @@ module.exports = {
            
            return res.json(machines);
         } catch (error) {
-            return res.status(400).send({ message: 'Error' });
+            return res.status(400).send(error.message);
         }
     },
 
@@ -23,13 +23,12 @@ module.exports = {
             unitObject.machines.push(machine);
             unitObject.save();
 
-            return res.send({ message: 'Created' });
+            return res.send({ message: 'Machine created' });
         } catch (error) {
-            return res.status(400).send({ message: 'Error' }); 
+            return res.status(400).send(error.message);
         }
     },
 
-    //Not working yet
     async update(req, res) {
         try {
             const { id } = req.params;
@@ -37,9 +36,9 @@ module.exports = {
 
             await Machine.update({_id: id}, { unit, name, image, model, responsible, status });
 
-            return res.send({ message: 'Created' });
+            return res.send({ message: 'Machine updated' });
         } catch (error) {
-            return res.status(400).send({ message: 'Error' }); 
+            return res.status(400).send(error.message);
         } 
     },
 
@@ -49,9 +48,9 @@ module.exports = {
 
             await Machine.deleteOne({ _id: id });
 
-            return res.send({ message: 'Deleted' });
+            return res.send({ message: 'Machine deleted' });
         } catch (error) {
-            return res.status(400).send({ message: 'Error' });
+            return res.status(400).send(error.message);
         }
     },
 }

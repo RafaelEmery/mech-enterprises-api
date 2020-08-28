@@ -5,11 +5,11 @@ module.exports = {
 
     async index(req, res) {
         try {
-            const units = await Unit.find().populate('company', 'name').populate('machines');
+            const units = await Unit.find().populate('company', 'name');
 
             return res.json(units);
         } catch (error) {
-            return res.status(400).send({ message: 'Error' }); 
+            return res.status(400).send(error.message);
         }
     },
 
@@ -24,9 +24,9 @@ module.exports = {
             companyObject.units.push(unit);
             companyObject.save();
 
-            return res.send({ message: 'Created' });
+            return res.send({ message: 'Unit created' });
         } catch (error) {
-            return res.status(400).send({ message: 'Error' });
+            return res.status(400).send(error.message);
         }
     },
 
@@ -37,9 +37,9 @@ module.exports = {
             
             await Unit.update({ _id: id  }, { company, name });
             
-            return res.send({ message: 'Updated' });
+            return res.send({ message: 'Unit updated' });
         } catch (error) {
-            return res.status(400).send({ message: 'Error' });
+            return res.status(400).send(error.message);
         }
     },
 
@@ -49,9 +49,9 @@ module.exports = {
 
             await Unit.deleteOne({ _id: id });
 
-            return res.send({ message: 'Deleted' });
+            return res.send({ message: 'Unit deleted' });
         } catch (error) {
-            return res.status(400).send({ message: 'Error' });
+            return res.status(400).send(error.message);
         }
     },
 }

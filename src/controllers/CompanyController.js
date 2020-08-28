@@ -8,7 +8,7 @@ module.exports = {
 
             return res.json(companies);
         } catch (error) {
-            return res.status(400).send({ message: 'Error' });
+            return res.status(400).send(error.message);
         }
     },
 
@@ -22,7 +22,7 @@ module.exports = {
                                         path: 'units',
                                         populate: { path: 'machines' }
                                     });
-                                    
+
             return res.json(company);
             } catch (error) {
                 return res.status(400).send(error.message);
@@ -34,9 +34,9 @@ module.exports = {
             const { name } = req.body;
             const company = await Company.create({ name });
 
-            return res.json(company);
+            return res.send({ message: 'Company created' });
         } catch (error) {
-            return res.status(400).send({ message: 'Error' });
+            return res.status(400).send(error.message);
         }
     },
     
@@ -47,9 +47,9 @@ module.exports = {
             
             await Company.update({ _id: id  }, { name });
             
-            return res.send({ message: 'Updated' });
+            return res.send({ message: 'Company updated' });
         } catch (error) {
-            return res.status(400).send({ message: 'Error' });
+            return res.status(400).send(error.message);
         }
     },
 
@@ -59,9 +59,9 @@ module.exports = {
 
             await Company.deleteOne({ _id: id });
 
-            return res.send({ message: 'Deleted' });
+            return res.send({ message: 'Company deleted' });
         } catch (error) {
-            return res.status(400).send({ message: 'Error' });
+            return res.status(400).send(error.message);
         }
     }
 }
