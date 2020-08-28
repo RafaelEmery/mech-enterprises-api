@@ -17,6 +17,18 @@ RESTful API to manage companies, units and all your machines!
 
 ![](assets/src-tree.png)
 
+### :rocket: Run locally
+
+If you want to run the API in your own computer, you'll just need to:
+
+```
+git clone https://github.com/RafaelEmery/mech-enterprises-api.git 
+
+npm install
+
+npm start
+```
+
 ## :question: How it works?
 
 You can *create, read, update and delete* three entities:
